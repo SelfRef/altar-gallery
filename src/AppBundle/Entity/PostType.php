@@ -63,4 +63,3 @@ class PostType
         return $this->name;
     }
 }
-

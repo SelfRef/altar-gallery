@@ -435,3 +435,4 @@ class User
         return $this->customPermissions;
     }
 }
+

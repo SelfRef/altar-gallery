@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Channel
+ * PostType
  *
- * @ORM\Table(name="channel")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ChannelRepository")
+ * @ORM\Table(name="post_type")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PostTypeRepository")
  */
-class Channel
+class PostType
 {
     /**
      * @var int
@@ -44,7 +44,7 @@ class Channel
      *
      * @param string $name
      *
-     * @return Channel
+     * @return PostType
      */
     public function setName($name)
     {
@@ -63,3 +63,4 @@ class Channel
         return $this->name;
     }
 }
+

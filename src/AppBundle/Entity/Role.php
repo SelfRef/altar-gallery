@@ -94,4 +94,3 @@ class Role
         return $this->permissions;
     }
 }
-

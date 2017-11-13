@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Channel
+ * Role
  *
- * @ORM\Table(name="channel")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ChannelRepository")
+ * @ORM\Table(name="role")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RoleRepository")
  */
-class Channel
+class Role
 {
     /**
      * @var int
@@ -28,6 +28,13 @@ class Channel
      */
     private $name;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="permissions", type="simple_array")
+     */
+    private $permissions;
+
 
     /**
      * Get id
@@ -44,7 +51,7 @@ class Channel
      *
      * @param string $name
      *
-     * @return Channel
+     * @return Role
      */
     public function setName($name)
     {
@@ -62,4 +69,29 @@ class Channel
     {
         return $this->name;
     }
+
+    /**
+     * Set permissions
+     *
+     * @param array $permissions
+     *
+     * @return Role
+     */
+    public function setPermissions($permissions)
+    {
+        $this->permissions = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Get permissions
+     *
+     * @return array
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
 }
+

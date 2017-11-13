@@ -63,3 +63,4 @@ class Channel
         return $this->name;
     }
 }
+
