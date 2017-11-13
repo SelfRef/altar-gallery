@@ -25,6 +25,8 @@ class PostController extends Controller
       $postData = [
         "id" => $post->getId(),
         "path" => $post->getPath(),
+        "title" => $post->getTitle(),
+        "source" => $post->getSource(),
         "createDate" => $post->getCreateDate(),
         "publishDate" => $post->getPublishDate(),
         "isVisible" => $post->getIsVisible(),
