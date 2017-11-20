@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * PostType
  *
+ * @ApiResource
  * @ORM\Table(name="post_type")
  * @ORM\Entity(repositoryClass="App\Repository\PostTypeRepository")
  */
@@ -35,63 +37,9 @@ class PostType
      */
     private $controller;
 
-
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="type")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return PostType
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set controller
-     *
-     * @param string $controller
-     *
-     * @return PostType
-     */
-    public function setController($controller)
-    {
-        $this->controller = $controller;
-
-        return $this;
-    }
-
-    /**
-     * Get controller
-     *
-     * @return string
-     */
-    public function getController()
-    {
-        return $this->controller;
-    }
+    private $posts;
 }
 

@@ -9,5 +9,4 @@ return [
     ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle::class => ['all' => true],
-    App\App::class => ['all' => true],
 ];

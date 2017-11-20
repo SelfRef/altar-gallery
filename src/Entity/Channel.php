@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Channel
  *
+ * @ApiResource
  * @ORM\Table(name="channel")
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
  */
@@ -42,87 +44,9 @@ class Channel
      */
     private $requirements;
 
-
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\ManyToMany(targetEntity="Post", inversedBy="channels")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Channel
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set isDynamic
-     *
-     * @param boolean $isDynamic
-     *
-     * @return Channel
-     */
-    public function setIsDynamic($isDynamic)
-    {
-        $this->isDynamic = $isDynamic;
-
-        return $this;
-    }
-
-    /**
-     * Get isDynamic
-     *
-     * @return bool
-     */
-    public function getIsDynamic()
-    {
-        return $this->isDynamic;
-    }
-
-    /**
-     * Set requirements
-     *
-     * @param array $requirements
-     *
-     * @return Channel
-     */
-    public function setRequirements($requirements)
-    {
-        $this->requirements = $requirements;
-
-        return $this;
-    }
-
-    /**
-     * Get requirements
-     *
-     * @return array
-     */
-    public function getRequirements()
-    {
-        return $this->requirements;
-    }
+    private $posts;
 }
 
