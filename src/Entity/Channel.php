@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * Channel
  *
- * @ApiResource
  * @ORM\Table(name="channel")
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
+ * @ApiResource
  */
 class Channel
 {

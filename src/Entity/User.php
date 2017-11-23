@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * User
  *
- * @ApiResource
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ApiResource
  */
 class User
 {
@@ -101,7 +102,7 @@ class User
     private $socialData;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post", inversedBy="author")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author")
      */
     private $posts;
 

@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * Vote
  *
- * @ApiResource
  * @ORM\Table(name="vote")
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
+ * @ApiResource
  */
 class Vote
 {

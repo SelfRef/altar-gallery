@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * Comment
  *
- * @ApiResource
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+ * @ApiResource
  */
 class Comment
 {

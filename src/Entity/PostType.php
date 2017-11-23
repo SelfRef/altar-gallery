@@ -4,13 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * PostType
  *
- * @ApiResource
  * @ORM\Table(name="post_type")
  * @ORM\Entity(repositoryClass="App\Repository\PostTypeRepository")
+ * @ApiResource
  */
 class PostType
 {

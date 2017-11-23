@@ -4,15 +4,16 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
  * Role
  *
- * @ApiResource
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
+ * @ApiResource
  */
 class Role
 {
