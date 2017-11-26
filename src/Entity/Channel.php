@@ -14,15 +14,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
  * @ApiResource(
  *   collectionOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
- *     "post"={"method"="POST", "normalization_context"={"groups"={"post"}}}
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"channel.get"}}},
+ *     "post"={"method"="POST", "normalization_context"={"groups"={"channel.post"}}}
  *   },
  *   itemOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
- *     "put"={"method"="PUT", "denormalization_context"={"groups"={"put"}}},
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"channel.get"}}},
+ *     "put"={"method"="PUT", "denormalization_context"={"groups"={"channel.put"}}},
  *     "delete"={
  *       "method"="DELETE",
- *       "normalization_context"={"groups"={"delete"}}
+ *       "normalization_context"={"groups"={"channel.delete"}}
  *     },
  *   }
  * )
@@ -35,7 +35,7 @@ class Channel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"get"})
+     * @Groups({"channel.get"})
      */
     private $id;
 
@@ -43,7 +43,7 @@ class Channel
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
-     * @Groups({"get", "post", "put"})
+     * @Groups({"channel.get", "channel.post", "channel.put"})
      */
     private $name;
 
