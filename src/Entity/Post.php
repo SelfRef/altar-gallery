@@ -134,8 +134,8 @@ class Post
         $this->channels = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->votes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createDate = new DateTime();
-        $this->publishDate = new DateTime();
+        $this->createDate = new \DateTime();
+        $this->publishDate = new \DateTime();
         $this->isVisible = true;
     }
 
