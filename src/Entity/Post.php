@@ -7,13 +7,27 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Post
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
- * @ApiResource
+ * @ApiResource(
+ *   collectionOperations={
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
+ *     "post"={"method"="POST", "normalization_context"={"groups"={"post"}}}
+ *   },
+ *   itemOperations={
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
+ *     "put"={"method"="PUT", "denormalization_context"={"groups"={"put"}}},
+ *     "delete"={
+ *       "method"="DELETE",
+ *       "normalization_context"={"groups"={"delete"}}
+ *     },
+ *   }
+ * )
  */
 class Post
 {
@@ -23,6 +37,7 @@ class Post
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"get"})
      */
     private $id;
 
@@ -30,6 +45,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
+     * @Groups({"get", "post", "put"})
      */
     private $path;
 
@@ -37,6 +53,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Groups({"get", "post", "put"})
      */
     private $title;
 
@@ -44,6 +61,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=true)
+     * @Groups({"get", "post", "put"})
      */
     private $source;
 
@@ -51,6 +69,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="createDate", type="datetime")
+     * @Groups({"get"})
      */
     private $createDate;
 
@@ -58,6 +77,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="publishDate", type="datetime", nullable=true)
+     * @Groups({"get"})
      */
     private $publishDate;
 
@@ -72,31 +92,38 @@ class Post
      * @var array
      *
      * @ORM\Column(name="postValues", type="array", nullable=true)
+     * @Groups({"get", "post"})
      */
     private $postValues;
 
     /**
      * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts")
+     * @Groups({"get", "put"})
      */
     private $channels;
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     * @ApiSubresource
      */
     private $comments;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @Groups({"get"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="PostType", inversedBy="posts")
+     * @Groups({"get", "post"})
      */
     private $type;
 
     /**
      * @ORM\OneToMany(targetEntity="Vote", mappedBy="post")
+     * @Groups({"get"})
+     * @ApiSubresource
      */
     private $votes;
     /**
@@ -107,6 +134,9 @@ class Post
         $this->channels = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->votes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createDate = new DateTime();
+        $this->publishDate = new DateTime();
+        $this->isVisible = true;
     }
 
     /**

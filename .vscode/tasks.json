@@ -8,6 +8,12 @@
       "type": "shell",
       "command": "./bin/console server:run",
       "problemMatcher": []
+    },
+    {
+      "label": "cache:clear",
+      "type": "shell",
+      "command": "./bin/console cache:clear",
+      "problemMatcher": []
     }
   ]
 }

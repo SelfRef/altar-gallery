@@ -5,13 +5,27 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Channel
  *
  * @ORM\Table(name="channel")
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
- * @ApiResource
+ * @ApiResource(
+ *   collectionOperations={
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
+ *     "post"={"method"="POST", "normalization_context"={"groups"={"post"}}}
+ *   },
+ *   itemOperations={
+ *     "get"={"method"="GET", "normalization_context"={"groups"={"get"}}},
+ *     "put"={"method"="PUT", "denormalization_context"={"groups"={"put"}}},
+ *     "delete"={
+ *       "method"="DELETE",
+ *       "normalization_context"={"groups"={"delete"}}
+ *     },
+ *   }
+ * )
  */
 class Channel
 {
@@ -21,6 +35,7 @@ class Channel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"get"})
      */
     private $id;
 
@@ -28,6 +43,7 @@ class Channel
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Groups({"get", "post", "put"})
      */
     private $name;
 
@@ -47,6 +63,7 @@ class Channel
 
     /**
      * @ORM\ManyToMany(targetEntity="Post", inversedBy="channels")
+     * @ApiSubresource
      */
     private $posts;
     /**

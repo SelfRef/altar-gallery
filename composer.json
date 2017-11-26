@@ -4,6 +4,7 @@
     "require": {
         "php": "^7.0.8",
         "api-platform/api-pack": "^1.0",
+        "api-platform/core": "^2.1",
         "sensio/generator-bundle": "^3.1",
         "symfony/console": "^3.3",
         "symfony/framework-bundle": "^3.3",
