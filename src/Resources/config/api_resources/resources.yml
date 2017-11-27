@@ -1,0 +1,21 @@
+App\Entity\Channel:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "channels.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "channels.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "channel.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "channel.put" ]
+    delete:
+      method: DELETE

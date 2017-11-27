@@ -12,20 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ORM\Table(name="channel")
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
- * @ApiResource(
- *   collectionOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"channel.get"}}},
- *     "post"={"method"="POST", "normalization_context"={"groups"={"channel.post"}}}
- *   },
- *   itemOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"channel.get"}}},
- *     "put"={"method"="PUT", "denormalization_context"={"groups"={"channel.put"}}},
- *     "delete"={
- *       "method"="DELETE",
- *       "normalization_context"={"groups"={"channel.delete"}}
- *     },
- *   }
- * )
+ * 
  */
 class Channel
 {
