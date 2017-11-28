@@ -8,6 +8,8 @@ api_platform:
     version: 0.2.0
     eager_loading:
         enabled: true
+        fetch_partial: false
+        force_eager: false
     formats:
         json:
             mime_types: ['application/json']

@@ -1,21 +1,159 @@
 App\Entity\Channel:
   collectionOperations:
+    admin_get:
+      method: GET
+      path: "/admin/channels"
+    admin_post:
+      method: POST
+      path: "/admin/channels"
     get:
       method: GET
       normalization_context:
-        groups: [ "channels.get" ]
+        groups: [ "get" ]
+  itemOperations:
+    admin_get:
+      method: GET
+      normalization_context:
+        groups: [ "get" ]
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "put" ]
+    delete:
+      method: DELETE
+
+App\Entity\Comment:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "comments.get" ]
     post:
       method: POST
       normalization_context:
-        groups: [ "channels.post" ]
+        groups: [ "comments.post" ]
   itemOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "channel.get" ]
+        groups: [ "comment.get" ]
     put:
       method: PUT
       denormalization_context:
-        groups: [ "channel.put" ]
+        groups: [ "comment.put" ]
+    delete:
+      method: DELETE
+
+App\Entity\Post:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "posts.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "posts.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "post.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "post.put" ]
+    delete:
+      method: DELETE
+
+App\Entity\PostType:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "post_types.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "post_types.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "post_type.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "post_type.put" ]
+    delete:
+      method: DELETE
+
+App\Entity\Role:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "roles.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "roles.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "role.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "role.put" ]
+    delete:
+      method: DELETE
+
+App\Entity\User:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "users.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "users.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "user.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "user.put" ]
+    delete:
+      method: DELETE
+
+App\Entity\Vote:
+  collectionOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "votes.get" ]
+    post:
+      method: POST
+      normalization_context:
+        groups: [ "votes.post" ]
+  itemOperations:
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "vote.get" ]
+    put:
+      method: PUT
+      denormalization_context:
+        groups: [ "vote.put" ]
     delete:
       method: DELETE

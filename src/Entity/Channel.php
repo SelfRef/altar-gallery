@@ -12,7 +12,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ORM\Table(name="channel")
  * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
- * 
  */
 class Channel
 {
@@ -22,7 +21,7 @@ class Channel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"channel.get"})
+     * @Groups({"get", "get", "post", "post"})
      */
     private $id;
 
@@ -30,7 +29,7 @@ class Channel
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
-     * @Groups({"channel.get", "channel.post", "channel.put"})
+     * @Groups({"get", "get", "post", "post"})
      */
     private $name;
 
