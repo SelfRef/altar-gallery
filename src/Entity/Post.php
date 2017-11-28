@@ -82,7 +82,7 @@ class Post
     private $postValues;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts", cascade={"persist", "remove", "merge"})
      * @Groups({"p.get"})
      */
     private $channels;

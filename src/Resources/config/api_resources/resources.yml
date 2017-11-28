@@ -54,6 +54,7 @@ App\Entity\Post:
       method: POST
       path: "/admin/posts"
   itemOperations:
+    # User
     get:
       method: GET
       normalization_context:
