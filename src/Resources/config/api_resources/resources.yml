@@ -1,30 +1,69 @@
 App\Entity\Channel:
   collectionOperations:
+    # Admin
     admin_get:
       method: GET
       path: "/admin/channels"
     admin_post:
       method: POST
       path: "/admin/channels"
+    # User
     get:
       method: GET
       normalization_context:
         groups: [ "get" ]
   itemOperations:
+    # Admin
     admin_get:
       method: GET
-      normalization_context:
-        groups: [ "get" ]
+      path: "/admin/channel/{id}"
+    admin_put:
+      method: PUT
+      path: "/admin/channel/{id}"
+    admin_delete:
+      method: DELETE
+      path: "/admin/channel/{id}"
+    # User
     get:
       method: GET
       normalization_context:
         groups: [ "get" ]
-    put:
-      method: PUT
+
+App\Entity\Post:
+  collectionOperations:
+    # Admin
+    admin_get:
+      method: GET
+      path: "/admin/posts"
+    admin_post:
+      method: POST
+      path: "/admin/posts"
+    # User
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "get" ]
+    post:
+      method: POST
       denormalization_context:
-        groups: [ "put" ]
-    delete:
+        groups: [ "post" ]
+      normalization_context:
+        groups: [ "get" ]
+  itemOperations:
+    # Admin
+    admin_get:
+      method: GET
+      path: "/admin/posts/{id}"
+    admin_put:
+      method: PUT
+      path: "/admin/posts/{id}"
+    admin_delete:
       method: DELETE
+      path: "/admin/posts/{id}"
+    get:
+      method: GET
+      normalization_context:
+        groups: [ "get" ]
 
 App\Entity\Comment:
   collectionOperations:
@@ -45,28 +84,6 @@ App\Entity\Comment:
       method: PUT
       denormalization_context:
         groups: [ "comment.put" ]
-    delete:
-      method: DELETE
-
-App\Entity\Post:
-  collectionOperations:
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "posts.get" ]
-    post:
-      method: POST
-      normalization_context:
-        groups: [ "posts.post" ]
-  itemOperations:
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "post.get" ]
-    put:
-      method: PUT
-      denormalization_context:
-        groups: [ "post.put" ]
     delete:
       method: DELETE
 

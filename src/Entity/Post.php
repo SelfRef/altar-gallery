@@ -14,20 +14,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
- * @ApiResource(
- *   collectionOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"post.get"}}},
- *     "post"={"method"="POST", "normalization_context"={"groups"={"post.post"}}}
- *   },
- *   itemOperations={
- *     "get"={"method"="GET", "normalization_context"={"groups"={"post.get"}}},
- *     "put"={"method"="PUT", "denormalization_context"={"groups"={"post.put"}}},
- *     "delete"={
- *       "method"="DELETE",
- *       "normalization_context"={"groups"={"post.delete"}}
- *     },
- *   }
- * )
  */
 class Post
 {
@@ -37,7 +23,7 @@ class Post
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"post.get"})
+     * @Groups({"get"})
      */
     private $id;
 
@@ -45,7 +31,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
-     * @Groups({"post.get", "post.post", "post.put"})
+     * @Groups({"get", "post"})
      */
     private $path;
 
@@ -53,7 +39,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Groups({"post.get", "post.post", "post.put"})
+     * @Groups({"get", "post"})
      */
     private $title;
 
@@ -61,7 +47,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=true)
-     * @Groups({"post.get", "post.post", "post.put"})
+     * @Groups({"get", "post"})
      */
     private $source;
 
@@ -69,7 +55,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="createDate", type="datetime")
-     * @Groups({"post.get"})
+     * @Groups({"get"})
      */
     private $createDate;
 
@@ -77,7 +63,6 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="publishDate", type="datetime", nullable=true)
-     * @Groups({"post.get"})
      */
     private $publishDate;
 
@@ -92,13 +77,13 @@ class Post
      * @var array
      *
      * @ORM\Column(name="postValues", type="array", nullable=true)
-     * @Groups({"post.get", "post.post"})
+     * @Groups({"get", "post"})
      */
     private $postValues;
 
     /**
      * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts")
-     * @Groups({"post.get", "post.put"})
+     * @Groups({"get"})
      */
     private $channels;
     
@@ -110,20 +95,18 @@ class Post
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
-     * @Groups({"post.get"})
+     * @Groups({"get"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="PostType", inversedBy="posts")
-     * @Groups({"post.get", "post.post"})
+     * @Groups({"get", "post"})
      */
     private $type;
 
     /**
      * @ORM\OneToMany(targetEntity="Vote", mappedBy="post")
-     * @Groups({"post.get"})
-     * @ApiSubresource
      */
     private $votes;
     /**
