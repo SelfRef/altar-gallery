@@ -21,7 +21,7 @@ class Channel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"get"})
+     * @Groups({"ch.get"})
      */
     private $id;
 
@@ -29,7 +29,7 @@ class Channel
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
-     * @Groups({"get"})
+     * @Groups({"ch.get"})
      */
     private $name;
 

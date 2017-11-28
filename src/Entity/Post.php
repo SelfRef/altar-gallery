@@ -23,7 +23,7 @@ class Post
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"get"})
+     * @Groups({"p.get"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
-     * @Groups({"get", "post"})
+     * @Groups({"p.get", "p.post"})
      */
     private $path;
 
@@ -39,7 +39,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @Groups({"get", "post"})
+     * @Groups({"p.get", "p.post"})
      */
     private $title;
 
@@ -47,7 +47,7 @@ class Post
      * @var string
      *
      * @ORM\Column(name="source", type="string", length=255, nullable=true)
-     * @Groups({"get", "post"})
+     * @Groups({"p.get", "p.post"})
      */
     private $source;
 
@@ -55,7 +55,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="createDate", type="datetime")
-     * @Groups({"get"})
+     * @Groups({"p.get"})
      */
     private $createDate;
 
@@ -77,31 +77,30 @@ class Post
      * @var array
      *
      * @ORM\Column(name="postValues", type="array", nullable=true)
-     * @Groups({"get", "post"})
+     * @Groups({"p.get", "p.post"})
      */
     private $postValues;
 
     /**
      * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts")
-     * @Groups({"get"})
+     * @Groups({"p.get"})
      */
     private $channels;
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
-     * @ApiSubresource
      */
     private $comments;
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
-     * @Groups({"get"})
+     * @Groups({"p.get"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="PostType", inversedBy="posts")
-     * @Groups({"get", "post"})
+     * @Groups({"p.get", "p.post"})
      */
     private $type;
 
