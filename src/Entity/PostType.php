@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * PostType
@@ -21,6 +22,7 @@ class PostType
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"p.get"})
      */
     private $id;
 
@@ -28,6 +30,7 @@ class PostType
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Groups({"p.get"})
      */
     private $name;
 
@@ -35,6 +38,7 @@ class PostType
      * @var string
      *
      * @ORM\Column(name="controller", type="string", length=255, nullable=true)
+     * @Groups({"p.get"})
      */
     private $controller;
 

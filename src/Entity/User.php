@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User
@@ -21,6 +22,7 @@ class User
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"p.get"})
      */
     private $id;
 
@@ -35,6 +37,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255)
+     * @Groups({"p.get"})
      */
     private $nickname;
 
@@ -103,6 +106,7 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy="author")
+     * @ApiSubresource
      */
     private $posts;
 
@@ -404,29 +408,29 @@ class User
         return $this->socialData;
     }
 
-    /**
-     * Add post
-     *
-     * @param Post $post
-     *
-     * @return User
-     */
-    public function addPost(Post $post)
-    {
-        $this->posts[] = $post;
+    // /**
+    //  * Add post
+    //  *
+    //  * @param Post $post
+    //  *
+    //  * @return User
+    //  */
+    // public function addPost(Post $post)
+    // {
+    //     $this->posts[] = $post;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * Remove post
-     *
-     * @param Post $post
-     */
-    public function removePost(Post $post)
-    {
-        $this->posts->removeElement($post);
-    }
+    // /**
+    //  * Remove post
+    //  *
+    //  * @param Post $post
+    //  */
+    // public function removePost(Post $post)
+    // {
+    //     $this->posts->removeElement($post);
+    // }
 
     /**
      * Get posts

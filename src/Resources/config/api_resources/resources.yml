@@ -13,11 +13,6 @@ App\Entity\Channel:
       method: POST
       path: "/admin/channels"
   itemOperations:
-    # User
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "ch.get" ]
     # Admin
     admin_get:
       method: GET
@@ -32,20 +27,17 @@ App\Entity\Channel:
 App\Entity\Post:
   collectionOperations:
     # User
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "p.get" ]
+    # get:
+    #   method: GET
+    #   normalization_context:
+    #     groups: [ "p.get" ]
     post:
       method: POST
       denormalization_context:
         groups: [ "p.post" ]
       normalization_context:
         groups: [ "p.get" ]
-    api_channels_posts_get_subresource:
-      method: GET
-      normalization_context:
-        groups: [ "p.get" ]
+
     # Admin
     admin_get:
       method: GET
@@ -72,11 +64,6 @@ App\Entity\Post:
 
 App\Entity\Comment:
   collectionOperations:
-    # User
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "c.get" ]
     # Admin
     admin_get:
       method: GET
@@ -85,11 +72,6 @@ App\Entity\Comment:
       method: POST
       path: "/admin/comments"
   itemOperations:
-    # User
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "c.get" ]
     # Admin
     admin_get:
       method: GET
@@ -103,88 +85,108 @@ App\Entity\Comment:
 
 App\Entity\PostType:
   collectionOperations:
-    get:
+    # Admin
+    admin_get:
       method: GET
-      normalization_context:
-        groups: [ "pt.get" ]
+      path: "/admin/post_types"
     post:
       method: POST
-      normalization_context:
-        groups: [ "pt.post" ]
+      path: "/admin/post_types"
   itemOperations:
+    # Admin
     get:
       method: GET
-      normalization_context:
-        groups: [ "pt.get" ]
+      path: "/admin/post_types/{id}"
     put:
       method: PUT
-      denormalization_context:
-        groups: [ "pt.put" ]
+      path: "/admin/post_types/{id}"
     delete:
       method: DELETE
+      path: "/admin/post_types/{id}"
 
 App\Entity\Role:
   collectionOperations:
+    # Admin
     get:
       method: GET
-      normalization_context:
-        groups: [ "r.get" ]
+      path: "/admin/roles"
     post:
       method: POST
-      normalization_context:
-        groups: [ "r.post" ]
+      path: "/admin/roles"
   itemOperations:
+    # Admin
     get:
       method: GET
-      normalization_context:
-        groups: [ "r.get" ]
+      path: "/admin/roles/{id}"
     put:
       method: PUT
-      denormalization_context:
-        groups: [ "r.put" ]
+      path: "/admin/roles/{id}"
     delete:
       method: DELETE
+      path: "/admin/roles/{id}"
 
 App\Entity\User:
   collectionOperations:
+    # Admin
     get:
       method: GET
+      path: "/admin/users"
       normalization_context:
-        groups: [ "u.get" ]
+        groups: [ "u.admin.get" ]
     post:
       method: POST
+      path: "/admin/users"
+      denormalization_context:
+        groups: [ "u.admin.post" ]
       normalization_context:
-        groups: [ "u.post" ]
+        groups: [ "u.admin.get" ]
   itemOperations:
+    # User
     get:
       method: GET
       normalization_context:
         groups: [ "u.get" ]
+    # Admin
+    get:
+      method: GET
+      path: "/admin/users/{id}"
+      normalization_context:
+        groups: [ "u.admin.get" ]
     put:
       method: PUT
+      path: "/admin/users/{id}"
       denormalization_context:
-        groups: [ "u.put" ]
+        groups: [ "u.admin.put" ]
+      normalization_context:
+        groups: [ "u.admin.get" ]
     delete:
       method: DELETE
+      path: "/admin/users/{id}"
 
 App\Entity\Vote:
   collectionOperations:
-    get:
-      method: GET
-      normalization_context:
-        groups: [ "v.get" ]
+    # User
     post:
       method: POST
+      denormalization_context:
+        groups: [ "v.post" ]
       normalization_context:
         groups: [ "v.post" ]
-  itemOperations:
+    # Admin
     get:
       method: GET
-      normalization_context:
-        groups: [ "v.get" ]
+      path: "/admin/votes"
+    post:
+      method: POST
+      path: "/admin/votes"
+  itemOperations:
+    # Admin
+    get:
+      method: GET
+      path: "/admin/votes/{id}"
     put:
       method: PUT
-      denormalization_context:
-        groups: [ "v.put" ]
+      path: "/admin/votes/{id}"
     delete:
       method: DELETE
+      path: "/admin/votes/{id}"

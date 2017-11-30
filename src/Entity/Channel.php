@@ -48,7 +48,7 @@ class Channel
     private $requirements;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post", mappedBy="channels", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="channels")
      * @ApiSubresource
      */
     private $posts;
@@ -142,29 +142,29 @@ class Channel
         return $this->requirements;
     }
 
-    /**
-     * Add post
-     *
-     * @param Post $post
-     *
-     * @return Channel
-     */
-    public function addPost(Post $post)
-    {
-        $this->posts[] = $post;
+    // /**
+    //  * Add post
+    //  *
+    //  * @param Post $post
+    //  *
+    //  * @return Channel
+    //  */
+    // public function addPost(Post $post)
+    // {
+    //     $this->posts[] = $post;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * Remove post
-     *
-     * @param Post $post
-     */
-    public function removePost(Post $post)
-    {
-        $this->posts->removeElement($post);
-    }
+    // /**
+    //  * Remove post
+    //  *
+    //  * @param Post $post
+    //  */
+    // public function removePost(Post $post)
+    // {
+    //     $this->posts->removeElement($post);
+    // }
 
     /**
      * Get posts

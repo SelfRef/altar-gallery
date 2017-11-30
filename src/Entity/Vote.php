@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Vote
@@ -28,6 +29,7 @@ class Vote
      * @var int
      *
      * @ORM\Column(name="score", type="integer")
+     * @Groups({"v.get"})
      */
     private $score;
 

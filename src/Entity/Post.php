@@ -89,6 +89,7 @@ class Post
     
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     * @ApiSubresource
      */
     private $comments;
     
