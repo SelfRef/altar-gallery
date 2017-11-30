@@ -14,6 +14,12 @@
       "type": "shell",
       "command": "./bin/console cache:clear",
       "problemMatcher": []
+    },
+    {
+      "label": "schema:validate",
+      "type": "shell",
+      "command": "./bin/console doctrine:schema:validate",
+      "problemMatcher": []
     }
   ]
 }

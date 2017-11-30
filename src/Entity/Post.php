@@ -82,7 +82,7 @@ class Post
     private $postValues;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts", cascade={"persist", "remove", "merge"})
+     * @ORM\ManyToMany(targetEntity="Channel", mappedBy="posts")
      * @Groups({"p.get"})
      */
     private $channels;
@@ -299,29 +299,29 @@ class Post
         return $this->postValues;
     }
 
-    /**
-     * Add channel
-     *
-     * @param Channel $channel
-     *
-     * @return Post
-     */
-    public function addChannel(Channel $channel)
-    {
-        $this->channels[] = $channel;
+    // /**
+    //  * Add channel
+    //  *
+    //  * @param Channel $channel
+    //  *
+    //  * @return Post
+    //  */
+    // public function addChannel(Channel $channel)
+    // {
+    //     $this->channels[] = $channel;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * Remove channel
-     *
-     * @param Channel $channel
-     */
-    public function removeChannel(Channel $channel)
-    {
-        $this->channels->removeElement($channel);
-    }
+    // /**
+    //  * Remove channel
+    //  *
+    //  * @param Channel $channel
+    //  */
+    // public function removeChannel(Channel $channel)
+    // {
+    //     $this->channels->removeElement($channel);
+    // }
 
     /**
      * Get channels

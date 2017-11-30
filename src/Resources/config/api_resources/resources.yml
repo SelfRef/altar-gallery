@@ -69,49 +69,57 @@ App\Entity\Post:
     admin_delete:
       method: DELETE
       path: "/admin/posts/{id}"
-    # User
 
 App\Entity\Comment:
   collectionOperations:
+    # User
     get:
       method: GET
       normalization_context:
         groups: [ "c.get" ]
-    post:
+    # Admin
+    admin_get:
+      method: GET
+      path: "/admin/comments"
+    admin_post:
       method: POST
-      normalization_context:
-        groups: [ "c.post" ]
+      path: "/admin/comments"
   itemOperations:
+    # User
     get:
       method: GET
       normalization_context:
         groups: [ "c.get" ]
-    put:
+    # Admin
+    admin_get:
+      method: GET
+      path: "/admin/comments/{id}"
+    admin_put:
       method: PUT
-      denormalization_context:
-        groups: [ "c.put" ]
-    delete:
+      path: "/admin/comments/{id}"
+    admin_delete:
       method: DELETE
+      path: "/admin/comments/{id}"
 
 App\Entity\PostType:
   collectionOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "post_types.get" ]
+        groups: [ "pt.get" ]
     post:
       method: POST
       normalization_context:
-        groups: [ "post_types.post" ]
+        groups: [ "pt.post" ]
   itemOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "post_type.get" ]
+        groups: [ "pt.get" ]
     put:
       method: PUT
       denormalization_context:
-        groups: [ "post_type.put" ]
+        groups: [ "pt.put" ]
     delete:
       method: DELETE
 
@@ -120,20 +128,20 @@ App\Entity\Role:
     get:
       method: GET
       normalization_context:
-        groups: [ "roles.get" ]
+        groups: [ "r.get" ]
     post:
       method: POST
       normalization_context:
-        groups: [ "roles.post" ]
+        groups: [ "r.post" ]
   itemOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "role.get" ]
+        groups: [ "r.get" ]
     put:
       method: PUT
       denormalization_context:
-        groups: [ "role.put" ]
+        groups: [ "r.put" ]
     delete:
       method: DELETE
 
@@ -142,20 +150,20 @@ App\Entity\User:
     get:
       method: GET
       normalization_context:
-        groups: [ "users.get" ]
+        groups: [ "u.get" ]
     post:
       method: POST
       normalization_context:
-        groups: [ "users.post" ]
+        groups: [ "u.post" ]
   itemOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "user.get" ]
+        groups: [ "u.get" ]
     put:
       method: PUT
       denormalization_context:
-        groups: [ "user.put" ]
+        groups: [ "u.put" ]
     delete:
       method: DELETE
 
@@ -164,19 +172,19 @@ App\Entity\Vote:
     get:
       method: GET
       normalization_context:
-        groups: [ "votes.get" ]
+        groups: [ "v.get" ]
     post:
       method: POST
       normalization_context:
-        groups: [ "votes.post" ]
+        groups: [ "v.post" ]
   itemOperations:
     get:
       method: GET
       normalization_context:
-        groups: [ "vote.get" ]
+        groups: [ "v.get" ]
     put:
       method: PUT
       denormalization_context:
-        groups: [ "vote.put" ]
+        groups: [ "v.put" ]
     delete:
       method: DELETE

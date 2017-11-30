@@ -5,6 +5,7 @@
         "php": "^7.0.8",
         "api-platform/api-pack": "^1.0",
         "api-platform/core": "^2.1",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "sensio/generator-bundle": "^3.1",
         "symfony/console": "^3.3",
         "symfony/framework-bundle": "^3.3",
@@ -51,7 +52,7 @@
     "extra": {
         "symfony": {
             "id": "01BZB4EGS4P6FJ8VJ2D9FM6FR6",
-            "allow-contrib": false
+            "allow-contrib": "true"
         }
     }
 }

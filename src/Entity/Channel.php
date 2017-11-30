@@ -48,7 +48,7 @@ class Channel
     private $requirements;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post", inversedBy="channels", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="channels", cascade={"persist"})
      * @ApiSubresource
      */
     private $posts;
