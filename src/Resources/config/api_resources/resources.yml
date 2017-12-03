@@ -89,51 +89,51 @@ App\Entity\PostType:
     admin_get:
       method: GET
       path: "/admin/post_types"
-    post:
+    admin_post:
       method: POST
       path: "/admin/post_types"
   itemOperations:
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/post_types/{id}"
-    put:
+    admin_put:
       method: PUT
       path: "/admin/post_types/{id}"
-    delete:
+    admin_delete:
       method: DELETE
       path: "/admin/post_types/{id}"
 
 App\Entity\Role:
   collectionOperations:
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/roles"
-    post:
+    admin_post:
       method: POST
       path: "/admin/roles"
   itemOperations:
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/roles/{id}"
-    put:
+    admin_put:
       method: PUT
       path: "/admin/roles/{id}"
-    delete:
+    admin_delete:
       method: DELETE
       path: "/admin/roles/{id}"
 
 App\Entity\User:
   collectionOperations:
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/users"
       normalization_context:
         groups: [ "u.admin.get" ]
-    post:
+    admin_post:
       method: POST
       path: "/admin/users"
       denormalization_context:
@@ -147,19 +147,19 @@ App\Entity\User:
       normalization_context:
         groups: [ "u.get" ]
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/users/{id}"
       normalization_context:
         groups: [ "u.admin.get" ]
-    put:
+    admin_put:
       method: PUT
       path: "/admin/users/{id}"
       denormalization_context:
         groups: [ "u.admin.put" ]
       normalization_context:
         groups: [ "u.admin.get" ]
-    delete:
+    admin_delete:
       method: DELETE
       path: "/admin/users/{id}"
 
@@ -173,20 +173,20 @@ App\Entity\Vote:
       normalization_context:
         groups: [ "v.post" ]
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/votes"
-    post:
+    admin_post:
       method: POST
       path: "/admin/votes"
   itemOperations:
     # Admin
-    get:
+    admin_get:
       method: GET
       path: "/admin/votes/{id}"
-    put:
+    admin_put:
       method: PUT
       path: "/admin/votes/{id}"
-    delete:
+    admin_delete:
       method: DELETE
       path: "/admin/votes/{id}"
