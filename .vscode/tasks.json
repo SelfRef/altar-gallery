@@ -10,6 +10,18 @@
       "problemMatcher": []
     },
     {
+      "label": "server:start",
+      "type": "shell",
+      "command": "./bin/console server:start",
+      "problemMatcher": []
+    },
+    {
+      "label": "server:stop",
+      "type": "shell",
+      "command": "./bin/console server:stop",
+      "problemMatcher": []
+    },
+    {
       "label": "cache:clear",
       "type": "shell",
       "command": "./bin/console cache:clear",
@@ -19,6 +31,30 @@
       "label": "schema:validate",
       "type": "shell",
       "command": "./bin/console doctrine:schema:validate",
+      "problemMatcher": []
+    },
+    {
+      "label": "database:drop",
+      "type": "shell",
+      "command": "./bin/console doctrine:database:drop --force",
+      "problemMatcher": []
+    },
+    {
+      "label": "database:create",
+      "type": "shell",
+      "command": "./bin/console doctrine:database:create",
+      "problemMatcher": []
+    },
+    {
+      "label": "schema:create",
+      "type": "shell",
+      "command": "./bin/console doctrine:schema:create",
+      "problemMatcher": []
+    },
+    {
+      "label": "fixtures:load",
+      "type": "shell",
+      "command": "./bin/console doctrine:fixtures:load -n",
       "problemMatcher": []
     }
   ]

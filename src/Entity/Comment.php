@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Comment
@@ -21,6 +22,7 @@ class Comment
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"c.get"})
      */
     private $id;
 
@@ -28,6 +30,7 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Groups({"c.get"})
      */
     private $content;
 
@@ -35,6 +38,7 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="createDate", type="datetime")
+     * @Groups({"c.get"})
      */
     private $createDate;
 
@@ -42,6 +46,7 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="modifyDate", type="datetime", nullable=true)
+     * @Groups({"c.get"})
      */
     private $modifyDate;
 
@@ -59,6 +64,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     * @Groups({"c.get"})
      */
     private $author;
 

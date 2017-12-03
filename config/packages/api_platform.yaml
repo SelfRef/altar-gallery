@@ -5,7 +5,7 @@ api_platform:
           - "%kernel.project_dir%/src/Resources/config/api_resources"
     title: "Altar API"
     description: "Private dev API for Altar Gallery based applications."
-    version: 0.2.0
+    version: 0.2.1
     eager_loading:
         enabled: true
         fetch_partial: false

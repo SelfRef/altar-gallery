@@ -27,17 +27,16 @@ App\Entity\Channel:
 App\Entity\Post:
   collectionOperations:
     # User
-    # get:
-    #   method: GET
-    #   normalization_context:
-    #     groups: [ "p.get" ]
+    api_channels_posts_get_subresource:
+      method: GET
+      normalization_context:
+        groups: [ "p.get" ]
     post:
       method: POST
       denormalization_context:
         groups: [ "p.post" ]
       normalization_context:
         groups: [ "p.get" ]
-
     # Admin
     admin_get:
       method: GET
@@ -64,6 +63,11 @@ App\Entity\Post:
 
 App\Entity\Comment:
   collectionOperations:
+    # User
+    api_posts_comments_get_subresource:
+      method: GET
+      normalization_context:
+        groups: [ "c.get" ]
     # Admin
     admin_get:
       method: GET
